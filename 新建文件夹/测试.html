@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const arr1 = [1, 9, 10, 29, 5, 1, 7, 12]
+
+        function pop(arr) {
+            // 最外层实际循环了7次，为i=0，1，2，3，4，5，6的时候，这个数组实际长度为8
+            for (let i = 0; i < arr.length - 1; i++) {
+                //每一次对比都是从下标为1的数组元素开始比较，如果前面大于后面则两者交换位置，然后j++，如果前面小于后面，那么位置不变j++，且当
+                //完整一轮对比结束，那么数组末尾处一定是最大的元素值，然后i++，此时进行下一轮从下标为1的数组元素开始向后对比，但是因为此时数组
+                //末尾已经是最大值，我们就不需要再进行对比了，所有我们的j循环的最大次数可以减去i，当第一轮对比完减去i为1，第二轮对比完减去i为2
+                for (let j = 0; j < arr.length - 1 - i; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        let mid = arr[j + 1]
+                        arr[j + 1] = arr[j]
+                        arr[j] = mid
+                    }
+                }
+            }
+            return arr
+        }
+        console.log(pop(arr1))
+
+    </script>
+</body>
+
+</html>
